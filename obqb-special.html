@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oswaal SQP 2026 Series</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #070911; --card-bg: rgba(255, 255, 255, 0.04); --border-color: rgba(255, 255, 255, 0.1); --accent-blue: #3b82f6; --text-gray: #94a3b8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-color); color: white; min-height: 100vh; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid var(--border-color); background: rgba(7, 9, 17, 0.85); backdrop-filter: blur(12px); }
+        .header-section { text-align: center; padding: 40px 20px; background: linear-gradient(to bottom, rgba(59, 130, 246, 0.05), transparent); }
+        .main-img { width: 180px; height: 240px; background: #1e293b; border-radius: 15px; margin: 0 auto 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid var(--border-color); overflow: hidden; }
+        .main-img img { width: 100%; height: 100%; object-fit: cover; }
+        .back-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .badge-row { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .badge { padding: 6px 15px; border-radius: 10px; font-size: 12px; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); }
+        .badge.green { color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+        .badge.blue { color: #60a5fa; background: rgba(59, 130, 246, 0.1); }
+        .items-list { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .list-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 18px; padding: 12px; display: flex; align-items: center; gap: 15px; text-decoration: none; color: white; }
+        .thumb { width: 60px; height: 80px; background: #1e293b; border-radius: 8px; overflow: hidden; }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .download-btn { width: 40px; height: 40px; border-radius: 50%; background: #3b82f6; display: grid; place-items: center; margin-left: auto; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="display:flex; align-items:center; gap:10px">
+            <div style="background:#3b82f6; width:30px; height:30px; border-radius:8px; display:grid; place-items:center"><i class="fa-solid fa-book-open" style="font-size:14px"></i></div>
+            <span style="font-weight:800">EBooks Official</span>
+        </div>
+        <a href="index.html" style="background:var(--card-bg); color:white; padding:6px 15px; border-radius:20px; text-decoration:none; font-size:12px; border:1px solid var(--border-color)"><i class="fa-solid fa-arrow-left"></i> Library</a>
+    </nav>
+
+    <div class="header-section">
+        <div class="main-img"><img src="https://m.media-amazon.com/images/I/719h7tM35dL._SL1500_.jpg"></div>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <h1 style="font-size: 1.8rem; font-weight: 800;">Oswaal SQP 2026 Series</h1>
+        <p style="color:var(--text-gray); font-size:14px; margin-top:5px">New Edition Sample Papers & Old Bundles.</p>
+        <div class="badge-row">
+            <span class="badge green">Verified</span>
+            <span class="badge blue"><i class="fa-solid fa-layer-group"></i> 4 Items</span>
+        </div>
+    </div>
+
+    <div class="items-list">
+        <a href="#" class="list-card">
+            <div class="thumb"><img src="https://m.media-amazon.com/images/I/719h7tM35dL._SL1500_.jpg"></div>
+            <div>
+                <h4 style="font-size:14px">Maths SQP 2026</h4>
+                <p style="font-size:11px; color:var(--text-gray)">Oswaal Books</p>
+                <span style="font-size:10px; background:rgba(255,255,255,0.05); padding:2px 8px; border-radius:5px; margin-top:5px; display:inline-block">Maths</span>
+            </div>
+            <div class="download-btn"><i class="fa-solid fa-download"></i></div>
+        </a>
+        <a href="#" class="list-card">
+            <div class="thumb"><img src="https://m.media-amazon.com/images/I/81I35pS4-lL._SL1500_.jpg"></div>
+            <div>
+                <h4 style="font-size:14px">Science SQP 2026</h4>
+                <p style="font-size:11px; color:var(--text-gray)">Oswaal Books</p>
+                <span style="font-size:10px; background:rgba(255,255,255,0.05); padding:2px 8px; border-radius:5px; margin-top:5px; display:inline-block">Science</span>
+            </div>
+            <div class="download-btn"><i class="fa-solid fa-download"></i></div>
+        </a>
+    </div>
+</body>
+</html>
