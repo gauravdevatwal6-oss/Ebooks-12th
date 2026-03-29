@@ -58,7 +58,19 @@
             font-size: 13px; text-decoration: none; margin-bottom: 25px;
         }
         .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
-        .hero h1 span { background: linear-gradient(to right, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero h1 span { 
+            background: linear-gradient(to right, #60a5fa, #a855f7); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            animation: flicker 2s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+        }
+
         .hero p { color: var(--text-gray); max-width: 480px; margin: 0 auto 30px; font-size: 15px; }
 
         /* --- Search --- */
@@ -76,18 +88,43 @@
         /* --- Auto-Running Section --- */
         .section-header { display: flex; align-items: center; gap: 12px; padding: 0 20px; margin-bottom: 15px; }
         .blue-bar { width: 4px; height: 24px; background: var(--accent-blue); border-radius: 2px; }
-        .live-tag { background: rgba(239,68,68,0.1); color: #ef4444; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+        
+        .live-tag { 
+            background: rgba(239,68,68,0.1); 
+            color: #ef4444; 
+            font-size: 10px; 
+            font-weight: 800; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            animation: blinker 1.5s linear infinite;
+        }
+
+        @keyframes blinker { 50% { opacity: 0; } }
 
         .slider-wrapper { width: 100%; overflow: hidden; padding: 10px 0 30px; }
         .slider-track { display: flex; gap: 15px; width: max-content; animation: scrollLeft 30s linear infinite; }
         .slider-track:hover { animation-play-state: paused; }
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        .book-card { min-width: 160px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 12px; flex-shrink: 0; transition: 0.3s; }
-        .book-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
+        /* 🔥 Book cards are now clickable links */
+        .book-card { 
+            display: block;
+            text-decoration: none;
+            color: white;
+            min-width: 160px; 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            border-radius: 20px; 
+            padding: 12px; 
+            flex-shrink: 0; 
+            transition: 0.3s; 
+        }
+        .book-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); background: rgba(255, 255, 255, 0.08); }
         .book-img-box { width: 100%; aspect-ratio: 3/4; background: #1e293b; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
         .book-img-box img { width: 100%; height: 100%; object-fit: cover; }
         .new-badge { background: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+        .book-card h4 { font-size: 14px; margin-top: 5px; }
+        .book-card p { font-size: 12px; color: var(--text-gray); }
 
         /* --- Vertical Category Cards --- */
         .cat-container { padding: 0 20px; display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
@@ -159,41 +196,42 @@
 
     <div class="slider-wrapper">
         <div class="slider-track" id="sliderTrack">
-            <div class="book-card">
+            <a href="physics-2026.html" class="book-card">
                 <div class="book-img-box"><img src="https://m.media-amazon.com/images/I/81Wp6+vLiiL.jpg"></div>
                 <span class="new-badge">NEW</span>
                 <h4>Physics SQP 2026</h4>
                 <p>Physics Wallah</p>
-            </div>
-            <div class="book-card">
+            </a>
+            <a href="english-pw.html" class="book-card">
                 <div class="book-img-box"><img src="https://m.media-amazon.com/images/I/81W8U75R8nL.jpg"></div>
                 <span class="new-badge">NEW</span>
                 <h4>English Core (PW)</h4>
                 <p>Physics Wallah</p>
-            </div>
-            <div class="book-card">
+            </a>
+            <a href="chemistry-arihant.html" class="book-card">
                 <div class="book-img-box"><img src="https://m.media-amazon.com/images/I/71Y-tL-P3cL.jpg"></div>
                 <span class="new-badge">NEW</span>
                 <h4>Chemistry Arihant</h4>
                 <p>Arihant Experts</p>
-            </div>
-            <div class="book-card">
+            </a>
+            
+            <a href="physics-2026.html" class="book-card">
                 <div class="book-img-box"><img src="https://m.media-amazon.com/images/I/81Wp6+vLiiL.jpg"></div>
                 <span class="new-badge">NEW</span>
                 <h4>Physics SQP 2026</h4>
                 <p>Physics Wallah</p>
-            </div>
-            <div class="book-card">
+            </a>
+            <a href="english-pw.html" class="book-card">
                 <div class="book-img-box"><img src="https://m.media-amazon.com/images/I/81W8U75R8nL.jpg"></div>
                 <span class="new-badge">NEW</span>
                 <h4>English Core (PW)</h4>
                 <p>Physics Wallah</p>
-            </div>
+            </a>
         </div>
     </div>
 
     <div class="cat-container" id="categoryList">
-        <a href="#" class="cat-item special">
+        <a href="sst-special.html" class="cat-item special">
             <div class="cat-top">
                 <div class="icon-circle" style="background:rgba(245,158,11,0.1); border:1px solid #f59e0b; color:#f59e0b;"><i class="fa-solid fa-fire"></i></div>
                 <span class="type-tag">EXAM</span>
@@ -208,7 +246,7 @@
             </div>
         </a>
 
-        <a href="#" class="cat-item">
+        <a href="revision-packs.html" class="cat-item">
             <div class="cat-top">
                 <div class="icon-circle" style="background:rgba(239,68,68,0.1); border:1px solid #ef4444; color:#ef4444;"><i class="fa-solid fa-bolt"></i></div>
                 <span class="type-tag">HOT</span>
@@ -240,29 +278,21 @@
     </footer>
 
     <script>
-        // 1. Live Search Logic
+        // Search & Filter Logic
         const searchInput = document.getElementById('mainSearch');
-        const cards = document.querySelectorAll('.book-card, .cat-item');
+        const searchables = document.querySelectorAll('.book-card, .cat-item');
 
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(term) ? 'block' : 'none';
+            searchables.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(term) ? 'block' : 'none';
             });
         });
 
-        // 2. Chip Filtering
         function filterChip(subject) {
             searchInput.value = subject;
             searchInput.dispatchEvent(new Event('input'));
-        }
-
-        // 3. Service Worker Registration (PWA)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW failed', err));
-            });
         }
     </script>
 
