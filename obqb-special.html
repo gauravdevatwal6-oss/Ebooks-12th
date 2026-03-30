@@ -34,18 +34,8 @@
             background: rgba(7, 9, 17, 0.85); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 1000;
         }
-
-        /* 🔥 Logo Home Link Style */
-        .logo-link {
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            text-decoration: none; /* Link underline hatane ke liye */
-            color: white;
-            transition: 0.2s;
-        }
-        .logo-link:active { transform: scale(0.95); } /* Click feedback for logo */
-
+        .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; transition: 0.2s; }
+        .logo-link:active { transform: scale(0.95); }
         .logo-box { background: var(--accent-blue); width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; }
         .back-nav-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
 
@@ -60,7 +50,7 @@
         .badge.verified { background: rgba(34, 197, 94, 0.1); color: var(--accent-green); border-color: rgba(34, 197, 94, 0.2); }
         .badge.items { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.2); }
 
-        /* --- Search Area --- */
+        /* --- Search & Button Area --- */
         .search-container { padding: 10px 20px 0px; max-width: 500px; margin: 0 auto; text-align: center; }
         .search-wrap { position: relative; width: 100%; margin-bottom: 15px; }
         .search-wrap i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-gray); font-size: 16px; }
@@ -69,44 +59,19 @@
         .method-btn { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); padding: 12px 24px; border-radius: 30px; color: #cbd5e1; font-size: 13px; font-weight: 600; text-decoration: none; transition: 0.3s; margin-bottom: 25px; }
         .method-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-blue); color: white; transform: translateY(-2px); }
 
-        /* --- Books List Container --- */
+        /* --- PDF Items --- */
         .items-container { padding: 0 20px; display: flex; flex-direction: column; gap: 15px; }
-        
-        /* 🔥 Book Card Style with Selection Logic */
         .pdf-item { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border-color); 
-            border-radius: 20px; 
-            padding: 15px; 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            color: white; 
-            cursor: pointer;
-            position: relative; 
-            overflow: hidden; 
-            transition: 0.3s ease-out; 
-            outline: 3px solid transparent; 
-            outline-offset: -3px; 
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 15px; 
+            display: flex; align-items: center; gap: 15px; color: white; cursor: pointer;
+            position: relative; overflow: hidden; transition: 0.3s; 
+            outline: 3px solid transparent; outline-offset: -3px; 
         }
-        
         .pdf-item.hidden { display: none; }
-
-        @keyframes cardBlink {
-            0% { background-color: rgba(255, 255, 255, 0.15); }
-            100% { background-color: rgba(255, 255, 255, 0.06); }
-        }
-
-        .pdf-item:active {
-            transform: scale(0.98);
-            animation: cardBlink 0.3s ease-out;
-        }
-
-        .pdf-item:focus-within {
-            background-color: rgba(59, 130, 246, 0.05);
-            outline: 3px solid var(--accent-blue); 
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
+        
+        @keyframes cardBlink { 0% { background: rgba(255,255,255,0.15); } 100% { background: rgba(255,255,255,0.04); } }
+        .pdf-item:active { transform: scale(0.98); animation: cardBlink 0.3s; }
+        .pdf-item:focus-within { outline: 3px solid var(--accent-blue); background: rgba(59, 130, 246, 0.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
 
         .item-img { width: 70px; aspect-ratio: 3/4; background: #1e293b; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); }
         .item-img img { width: 100%; height: 100%; object-fit: cover; }
@@ -114,9 +79,9 @@
         .item-title { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
         .item-pub { color: var(--text-gray); font-size: 12px; display: flex; align-items: center; gap: 5px; margin-bottom: 10px; }
         .tag-pill { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-gray); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 15px; text-transform: uppercase; }
+        
         .download-icon { width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: white; display: grid; place-items: center; font-size: 18px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); transition: 0.3s; text-decoration: none; }
         .download-icon:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
-
     </style>
 </head>
 <body>
@@ -130,14 +95,12 @@
     </nav>
 
     <div class="series-header">
-        <div class="series-img">
-            <img src="obqb-image.jpg" alt="Oswaal Books QB">
-        </div>
+        <div class="series-img"><img src="obqb-image.jpg"></div>
         <h1 class="series-title">Oswaal Books PCMB [Questions Banks] 2026</h1>
         <p class="series-desc">Latest Edition Questions Banks with Complete Solutions & Solved PYQs.</p>
         <div class="status-badges">
             <span class="badge verified"><i class="fa-solid fa-circle-check"></i> Verified Files</span>
-            <span class="badge items"><i class="fa-solid fa-folder-open"></i> <span id="itemCount">2</span> PDF Items</span>
+            <span class="badge items"><i class="fa-solid fa-folder-open"></i> <span id="itemCountText">0</span> PDF Items</span>
         </div>
     </div>
 
@@ -146,9 +109,7 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" id="subjectSearch" placeholder="Search Books...">
         </div>
-        <a href="HOW_TO_DOWNLOAD_VIDEO_LINK" class="method-btn">
-            <i class="fa-solid fa-circle-play"></i> Watch Download Method
-        </a>
+        <a href="HOW_TO_DOWNLOAD_VIDEO_LINK" class="method-btn"><i class="fa-solid fa-circle-play"></i> Watch Download Method</a>
     </div>
 
     <div class="items-container" id="booksList">
@@ -163,21 +124,11 @@
         </div>
 
         <div class="pdf-item" tabindex="0">
-            <div class="item-img"><img src="obchemistryqb-image.jpg"></div>
+            <div class="item-img"><img src="https://m.media-amazon.com/images/I/81I35pS4-lL._SL1500_.jpg"></div>
             <div class="item-details">
-                <div class="item-title">Chemistry Question Bank 2026</div>
+                <div class="item-title">Chemistry QB 2026</div>
                 <div class="item-pub"><i class="fa-solid fa-bookmark"></i> Oswaal Books</div>
                 <span class="tag-pill">CHEMISTRY</span>
-            </div>
-            <a href="CHEM_LINK" class="download-icon"><i class="fa-solid fa-download"></i></a>
-        </div>
-
-        <div class="pdf-item" tabindex="0">
-            <div class="item-img"><img src="obphysicsqb-image.jpg"></div>
-            <div class="item-details">
-                <div class="item-title">Physics Question Bank 2026</div>
-                <div class="item-pub"><i class="fa-solid fa-bookmark"></i> Oswaal Books</div>
-                <span class="tag-pill">PHYSICS</span>
             </div>
             <a href="CHEM_LINK" class="download-icon"><i class="fa-solid fa-download"></i></a>
         </div>
@@ -187,24 +138,27 @@
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('subjectSearch');
             const bookItems = document.getElementsByClassName('pdf-item');
-            const itemCountBadge = document.getElementById('itemCount');
+            const itemCountBadge = document.getElementById('itemCountText');
 
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase().trim();
+            function updateCount() {
                 let visibleCount = 0;
                 Array.from(bookItems).forEach(item => {
-                    const text = item.innerText.toLowerCase();
-                    if (text.includes(searchTerm)) {
-                        item.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        item.classList.add('hidden');
-                    }
+                    if (!item.classList.contains('hidden')) visibleCount++;
                 });
                 itemCountBadge.textContent = visibleCount;
+            }
+
+            updateCount();
+
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                Array.from(bookItems).forEach(item => {
+                    const text = item.innerText.toLowerCase();
+                    item.classList.toggle('hidden', !text.includes(term));
+                });
+                updateCount();
             });
         });
     </script>
-
 </body>
 </html>
