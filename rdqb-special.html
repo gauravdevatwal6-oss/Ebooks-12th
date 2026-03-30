@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educart [Questions Banks] 2026 | Class 12</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        :root {
+            --bg-color: #070911;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --text-gray: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; border-bottom: 1px solid var(--border-color);
+            background: rgba(7, 9, 17, 0.85); backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; transition: 0.2s; }
+        .logo-link:active { transform: scale(0.95); }
+        .logo-box { background: var(--accent-blue); width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; }
+        .back-nav-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+
+        /* --- Series Header --- */
+        .series-header { padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--border-color); margin-bottom: 10px; background: rgba(255,255,255,0.01); }
+        .series-img { width: 100%; max-width: 250px; aspect-ratio: 3/4; background: #1e293b; border-radius: 20px; margin: 0 auto 30px; overflow: hidden; border: 4px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .series-img img { width: 100%; height: 100%; object-fit: cover; }
+        .series-title { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; }
+        .series-desc { color: var(--text-gray); font-size: 14px; max-width: 400px; margin: 0 auto 30px; line-height: 1.6; }
+        .status-badges { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 13px; border: 1px solid transparent; }
+        .badge.verified { background: rgba(34, 197, 94, 0.1); color: var(--accent-green); border-color: rgba(34, 197, 94, 0.2); }
+        .badge.items { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.2); }
+
+        /* --- Search & Button Area --- */
+        .search-container { padding: 10px 20px 0px; max-width: 500px; margin: 0 auto; text-align: center; }
+        .search-wrap { position: relative; width: 100%; margin-bottom: 15px; }
+        .search-wrap i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-gray); font-size: 16px; }
+        .search-wrap input { width: 100%; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px 20px 16px 55px; border-radius: 15px; color: white; outline: none; font-size: 15px; transition: 0.3s; }
+        .search-wrap input:focus { border-color: var(--accent-blue); box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+        .method-btn { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); padding: 12px 24px; border-radius: 30px; color: #cbd5e1; font-size: 13px; font-weight: 600; text-decoration: none; transition: 0.3s; margin-bottom: 25px; }
+        .method-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-blue); color: white; transform: translateY(-2px); }
+
+        /* --- PDF Items --- */
+        .items-container { padding: 0 20px; display: flex; flex-direction: column; gap: 15px; }
+        .pdf-item { 
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 15px; 
+            display: flex; align-items: center; gap: 15px; color: white; cursor: pointer;
+            position: relative; overflow: hidden; transition: 0.3s; 
+            outline: 3px solid transparent; outline-offset: -3px; 
+        }
+        .pdf-item.hidden { display: none; }
+        
+        @keyframes cardBlink { 0% { background: rgba(255,255,255,0.15); } 100% { background: rgba(255,255,255,0.04); } }
+        .pdf-item:active { transform: scale(0.98); animation: cardBlink 0.3s; }
+        .pdf-item:focus-within { outline: 3px solid var(--accent-blue); background: rgba(59, 130, 246, 0.05); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+
+        .item-img { width: 70px; aspect-ratio: 3/4; background: #1e293b; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); }
+        .item-img img { width: 100%; height: 100%; object-fit: cover; }
+        .item-details { flex: 1; }
+        .item-title { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+        .item-pub { color: var(--text-gray); font-size: 12px; display: flex; align-items: center; gap: 5px; margin-bottom: 10px; }
+        .tag-pill { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-gray); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 15px; text-transform: uppercase; }
+        
+        .download-icon { width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: white; display: grid; place-items: center; font-size: 18px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); transition: 0.3s; text-decoration: none; }
+        .download-icon:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-link">
+            <div class="logo-box"><i class="fa-solid fa-book-open" style="color:white"></i></div>
+            <h2 style="font-size: 1.1rem; font-weight: 800;">EBooks Library</h2>
+        </a>
+        <a href="index.html" class="back-nav-btn"><i class="fa-solid fa-arrow-left"></i> Library</a>
+    </nav>
+
+    <div class="series-header">
+        <div class="series-img"><img src="rdqb-image.jpg"></div>
+        <h1 class="series-title">RD Sharma Applied Maths 2026</h1>
+        <p class="series-desc">Latest Edition Questions Banks with Complete Solutions & Solved PYQs.</p>
+        <div class="status-badges">
+            <span class="badge verified"><i class="fa-solid fa-circle-check"></i> Verified Files</span>
+            <span class="badge items"><i class="fa-solid fa-folder-open"></i> <span id="itemCountText">0</span> PDF Items</span>
+        </div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="subjectSearch" placeholder="Search Books...">
+        </div>
+        <a href="https://youtube.com/shorts/ylXYirCd1n8?si=PnnqewQlvBOmsi3T" class="method-btn"><i class="fa-solid fa-circle-play"></i> Watch Download Method</a>
+    </div>
+
+    <div class="items-container" id="booksList">
+        <div class="pdf-item" tabindex="0">
+            <div class="item-img"><img src="rdqb-image.jpg"></div>
+            <div class="item-details">
+                <div class="item-title">RD Sharma Applied Maths</div>
+                <div class="item-pub"><i class="fa-solid fa-bookmark"></i> Dhanpat Rai</div>
+                <span class="tag-pill">RD SHARMA</span>
+            </div>
+            <a href="https://vplink.in/l6l1" class="download-icon"><i class="fa-solid fa-download"></i></a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('subjectSearch');
+            const bookItems = document.getElementsByClassName('pdf-item');
+            const itemCountBadge = document.getElementById('itemCountText');
+
+            function updateCount() {
+                let visibleCount = 0;
+                Array.from(bookItems).forEach(item => {
+                    if (!item.classList.contains('hidden')) visibleCount++;
+                });
+                itemCountBadge.textContent = visibleCount;
+            }
+
+            updateCount();
+
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                Array.from(bookItems).forEach(item => {
+                    const text = item.innerText.toLowerCase();
+                    item.classList.toggle('hidden', !text.includes(term));
+                });
+                updateCount();
+            });
+        });
+    </script>
+</body>
+</html>
