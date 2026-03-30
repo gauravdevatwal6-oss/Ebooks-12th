@@ -34,6 +34,18 @@
             background: rgba(7, 9, 17, 0.85); backdrop-filter: blur(12px);
             position: sticky; top: 0; z-index: 1000;
         }
+
+        /* 🔥 Logo Home Link Style */
+        .logo-link {
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            text-decoration: none; /* Link underline hatane ke liye */
+            color: white;
+            transition: 0.2s;
+        }
+        .logo-link:active { transform: scale(0.95); } /* Click feedback for logo */
+
         .logo-box { background: var(--accent-blue); width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; }
         .back-nav-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
 
@@ -41,10 +53,8 @@
         .series-header { padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--border-color); margin-bottom: 10px; background: rgba(255,255,255,0.01); }
         .series-img { width: 100%; max-width: 250px; aspect-ratio: 3/4; background: #1e293b; border-radius: 20px; margin: 0 auto 30px; overflow: hidden; border: 4px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .series-img img { width: 100%; height: 100%; object-fit: cover; }
-        
         .series-title { font-size: 2rem; font-weight: 800; line-height: 1.2; margin-bottom: 15px; }
         .series-desc { color: var(--text-gray); font-size: 14px; max-width: 400px; margin: 0 auto 30px; line-height: 1.6; }
-
         .status-badges { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; }
         .badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 13px; border: 1px solid transparent; }
         .badge.verified { background: rgba(34, 197, 94, 0.1); color: var(--accent-green); border-color: rgba(34, 197, 94, 0.2); }
@@ -56,43 +66,55 @@
         .search-wrap i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-gray); font-size: 16px; }
         .search-wrap input { width: 100%; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px 20px 16px 55px; border-radius: 15px; color: white; outline: none; font-size: 15px; transition: 0.3s; }
         .search-wrap input:focus { border-color: var(--accent-blue); box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+        .method-btn { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); padding: 12px 24px; border-radius: 30px; color: #cbd5e1; font-size: 13px; font-weight: 600; text-decoration: none; transition: 0.3s; margin-bottom: 25px; }
+        .method-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--accent-blue); color: white; transform: translateY(-2px); }
 
-        /* 🔥 NAYA ADDED: Download Method Button Style */
-        .method-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            padding: 12px 24px;
-            border-radius: 30px;
-            color: #cbd5e1;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.3s;
-            margin-bottom: 25px;
-        }
-        .method-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .method-btn i { color: #ef4444; font-size: 14px; }
-
-        /* --- PDF Items List --- */
+        /* --- Books List Container --- */
         .items-container { padding: 0 20px; display: flex; flex-direction: column; gap: 15px; }
-        .pdf-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 15px; display: flex; align-items: center; gap: 15px; color: white; cursor: default; transition: 0.3s; }
+        
+        /* 🔥 Book Card Style with Selection Logic */
+        .pdf-item { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            border-radius: 20px; 
+            padding: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            color: white; 
+            cursor: pointer;
+            position: relative; 
+            overflow: hidden; 
+            transition: 0.3s ease-out; 
+            outline: 3px solid transparent; 
+            outline-offset: -3px; 
+        }
+        
         .pdf-item.hidden { display: none; }
+
+        @keyframes cardBlink {
+            0% { background-color: rgba(255, 255, 255, 0.15); }
+            100% { background-color: rgba(255, 255, 255, 0.06); }
+        }
+
+        .pdf-item:active {
+            transform: scale(0.98);
+            animation: cardBlink 0.3s ease-out;
+        }
+
+        .pdf-item:focus-within {
+            background-color: rgba(59, 130, 246, 0.05);
+            outline: 3px solid var(--accent-blue); 
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
         .item-img { width: 70px; aspect-ratio: 3/4; background: #1e293b; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); }
         .item-img img { width: 100%; height: 100%; object-fit: cover; }
         .item-details { flex: 1; }
-        .item-title { font-size: 1rem; font-weight: 700; margin-bottom: 5px; color: white; }
+        .item-title { font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
         .item-pub { color: var(--text-gray); font-size: 12px; display: flex; align-items: center; gap: 5px; margin-bottom: 10px; }
-        .item-pub i { color: var(--accent-blue); }
         .tag-pill { display: inline-block; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-gray); font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 15px; text-transform: uppercase; }
-        .download-icon { width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: white; display: grid; place-items: center; font-size: 18px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); transition: 0.3s; text-decoration: none; cursor: pointer; }
+        .download-icon { width: 45px; height: 45px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), #1d4ed8); color: white; display: grid; place-items: center; font-size: 18px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); transition: 0.3s; text-decoration: none; }
         .download-icon:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
 
     </style>
@@ -100,10 +122,10 @@
 <body>
 
     <nav>
-        <div style="display:flex; align-items:center; gap:12px">
+        <a href="index.html" class="logo-link">
             <div class="logo-box"><i class="fa-solid fa-book-open" style="color:white"></i></div>
             <h2 style="font-size: 1.1rem; font-weight: 800;">EBooks Library</h2>
-        </div>
+        </a>
         <a href="index.html" class="back-nav-btn"><i class="fa-solid fa-arrow-left"></i> Library</a>
     </nav>
 
@@ -122,26 +144,25 @@
     <div class="search-container">
         <div class="search-wrap">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="subjectSearch" placeholder="Search Books (e.g., 'Maths', 'Oswaal')...">
+            <input type="text" id="subjectSearch" placeholder="Search Books...">
         </div>
-        
-        <a href="https://youtube.com/shorts/ylXYirCd1n8?si=h00cKuVc6G7JBSQ4" class="method-btn">
+        <a href="HOW_TO_DOWNLOAD_VIDEO_LINK" class="method-btn">
             <i class="fa-solid fa-circle-play"></i> Watch Download Method
         </a>
     </div>
 
     <div class="items-container" id="booksList">
-        <div class="pdf-item">
+        <div class="pdf-item" tabindex="0">
             <div class="item-img"><img src="obmathsqb-image.jpg"></div>
             <div class="item-details">
                 <div class="item-title">Maths Question Bank 2026</div>
                 <div class="item-pub"><i class="fa-solid fa-bookmark"></i> Oswaal Books</div>
                 <span class="tag-pill">MATHS</span>
             </div>
-            <a href="https://vplink.in/9cAtx" class="download-icon"><i class="fa-solid fa-download"></i></a>
+            <a href="MATHS_LINK" class="download-icon"><i class="fa-solid fa-download"></i></a>
         </div>
 
-        <div class="pdf-item">
+        <div class="pdf-item" tabindex="0">
             <div class="item-img"><img src="https://m.media-amazon.com/images/I/81I35pS4-lL._SL1500_.jpg"></div>
             <div class="item-details">
                 <div class="item-title">Chemistry QB 2026</div>
