@@ -368,14 +368,14 @@
         const bookCards = document.querySelectorAll('.book-card');
         const catItems = document.querySelectorAll('.cat-item');
 
+        // Main Search Engine
         searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
+            const term = e.target.value.toLowerCase().trim();
 
-            // Books filter loop
+            // Filter Slider Books
             bookCards.forEach(card => {
                 const title = card.querySelector('h4').innerText.toLowerCase();
                 const brand = card.querySelector('p').innerText.toLowerCase();
-                if(title.includes(term) || brand.includes(term)){
+                if(title.includes(term) || brand.includes(term)) {
                     card.style.display = 'flex';
-                } else {
-                    card.style
+                } e
