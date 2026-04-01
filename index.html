@@ -363,19 +363,49 @@
         <p style="margin-top: 8px;">Contact: <a href="https://t.me/Direct_Contact2Bot" class="bot-link">@Direct_Contact2Bot</a></p>
     </footer>
 
-    <script>
+        <script>
         const searchInput = document.getElementById('mainSearch');
         const bookCards = document.querySelectorAll('.book-card');
         const catItems = document.querySelectorAll('.cat-item');
 
-        // Main Search Engine
+        // --- 1. Search Bar Logic ---
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase().trim();
 
-            // Filter Slider Books
+            // Books (Slider) filter logic
             bookCards.forEach(card => {
                 const title = card.querySelector('h4').innerText.toLowerCase();
                 const brand = card.querySelector('p').innerText.toLowerCase();
-                if(title.includes(term) || brand.includes(term)) {
-                    card.style.display = 'flex';
-                } e
+                
+                // Agar title ya brand mein search term hai toh dikhao, nahi toh chhupa do
+                if(title.includes(term) || brand.includes(term)){
+                    card.style.display = 'flex'; 
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Categories (Vertical Cards) filter logic
+            catItems.forEach(item => {
+                const catTitle = item.querySelector('h3').innerText.toLowerCase();
+                if(catTitle.includes(term)){
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // --- 2. "Oswaal" & "Educart" Buttons Logic ---
+        function filterChip(brandName) {
+            // 1. Search input mein naam daalo
+            searchInput.value = brandName;
+            
+            // 2. Search function ko manually trigger karo
+            const event = new Event('input');
+            searchInput.dispatchEvent(event);
+            
+            // 3. Page ko thoda scroll karke results pe le jao (Optional)
+            window.scrollTo({ top: searchInput.offsetTop - 100, behavior: 'smooth' });
+        }
+    </script>
