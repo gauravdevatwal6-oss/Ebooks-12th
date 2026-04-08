@@ -370,4 +370,102 @@
 
         <a href="jee.html" class="cat-item">
             <div class="cat-top">
-                <div class="icon-circle" style="color:#facc15; border: 1px solid #facc15; box-shadow: 0 0 10px 
+                <div class="icon-circle" style="color:#facc15; border: 1px solid #facc15; box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);"><i class="fa-solid fa-graduation-cap"></i></div>
+                <span class="type-tag">Exam</span>
+            </div>
+            <div class="cat-info">
+                <h3>JEE [Main+Advance]</h3>
+                <p>All Premium JEE Material are available.</p>
+            </div>
+            <div class="cat-foot">
+                <span><i class="fa-regular fa-folder" style="margin-right: 4px;"></i> 0 Resources</span>
+                <div class="arrow-go"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+        </a>
+
+        <a href="neet.html" class="cat-item">
+            <div class="cat-top">
+                <div class="icon-circle" style="color:#22c55e; border: 1px solid #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);"><i class="fa-solid fa-leaf"></i></div>
+                <span class="type-tag">Exam</span>
+            </div>
+            <div class="cat-info">
+                <h3>NEET</h3>
+                <p>All Premium NEET Material are available.</p>
+            </div>
+            <div class="cat-foot">
+                <span><i class="fa-regular fa-folder" style="margin-right: 4px;"></i> 0 Resources</span>
+                <div class="arrow-go"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+        </a>
+    </div>
+
+    <div class="help-area">
+        <div class="help-title">Need Help Downloading? 🤔</div>
+        <p>Having trouble with links or don't know how to bypass the shorteners? We've got you covered.</p>
+        <div class="fix-box">
+            <b style="color:#f59e0b;">Link Not Opening Fix:</b><br><br>
+            1. Tap the three dots (⋮) on top right.<br>
+            2. Select <b style="color:white;">"Open in Chrome"</b>.<br>
+            3. Ensure your Adblocker is turned off.
+        </div>
+        <div class="fix-box">
+            <b style="color:#f59e0b;">📥 Download Method:</b><br><br>
+            1. Click the Download button on any book.<br>
+            2. Complete the quick robot verification.<br>
+            3. Wait for the timer to finish and click Get Link.<br>
+        </div>
+        <div class="hero" style="padding: 0; padding-top: 15px;">
+            <a href="https://youtube.com/shorts/ylXYirCd1n8?si=h00cKuVc6G7JBSQ4" class="guide-pill" style="margin-bottom: 0;"><i class="fa-solid fa-circle-play" style="color:#ef4444"></i> Watch Video Guide</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created with ❤️ for Class 12 Students</p>
+        <p style="margin-top: 8px;">Contact: <a href="https://t.me/Direct_Contact2Bot" class="bot-link">@Direct_Contact2Bot</a></p>
+        <p>Owner GAURAV DEVATWAL</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('mainSearch');
+        const bookCards = document.querySelectorAll('.book-card');
+        const catItems = document.querySelectorAll('.cat-item');
+
+        // --- 1. Search Bar Logic ---
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+
+            // Books (Slider) filter logic
+            bookCards.forEach(card => {
+                const title = card.querySelector('h4').innerText.toLowerCase();
+                const brand = card.querySelector('p').innerText.toLowerCase();
+                
+                if(title.includes(term) || brand.includes(term)){
+                    card.style.display = 'flex'; 
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Categories (Vertical Cards) filter logic
+            catItems.forEach(item => {
+                const catTitle = item.querySelector('h3').innerText.toLowerCase();
+                if(catTitle.includes(term)){
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // --- 2. "Oswaal" & "Educart" Buttons Logic ---
+        function filterChip(brandName) {
+            searchInput.value = brandName;
+            
+            const event = new Event('input');
+            searchInput.dispatchEvent(event);
+            
+            window.scrollTo({ top: searchInput.offsetTop - 100, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
